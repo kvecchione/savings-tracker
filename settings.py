@@ -96,16 +96,24 @@ WSGI_APPLICATION = "wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": os.environ.get("MYSQL_DATABASE", "savingstracker"),
-        "USER": os.environ.get("MYSQL_USERNAME", "savings"),
-        "PASSWORD": os.environ.get("MYSQL_PASSWORD", "null"),
-        "HOST": os.environ.get("MYSQL_HOSTNAME", "localhost"),
-        "PORT": os.environ.get("MYSQL_PORT", "3306"),
+if os.environ.get('DJANGO_DB_ENGINE') == 'mysql':
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": os.environ.get("MYSQL_DATABASE", "savingstracker"),
+            "USER": os.environ.get("MYSQL_USERNAME", "savings"),
+            "PASSWORD": os.environ.get("MYSQL_PASSWORD", "null"),
+            "HOST": os.environ.get("MYSQL_HOSTNAME", "localhost"),
+            "PORT": os.environ.get("MYSQL_PORT", "3306"),
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": "db.sqlite3",
+        }
+    }   
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -131,7 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "America/New_York"
 
 USE_I18N = True
 
