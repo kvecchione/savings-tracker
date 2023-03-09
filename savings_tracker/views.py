@@ -27,18 +27,14 @@ def transfer(request):
         form = TransferForm(request.POST)
         if form.is_valid():
             t = Transaction()
-            a = Account.objects.get(name=form.cleaned_data['account'])
-            t.account = a
+            t.account = Account.objects.get(name=form.cleaned_data['account'])
             if form.cleaned_data['type'] == 'withdrawal':
                 t.amount = -form.cleaned_data['amount']
-                a.balance -= form.cleaned_data['amount']
             elif form.cleaned_data['type'] == 'deposit':
                 t.amount = form.cleaned_data['amount']
-                a.balance += form.cleaned_data['amount']
             t.date = datetime.datetime.now()
             t.description = form.cleaned_data['description']
             t.save()
-            a.save()
 
             return HttpResponseRedirect('/')
     else:

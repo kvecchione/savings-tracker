@@ -19,7 +19,5 @@ class RunScheduledTransfers(CronJobBase):
                 transaction.date = datetime.datetime.now()
                 transaction.description = scheduled_transfer.description
                 transaction.save()
-                account.balance += scheduled_transfer.amount
-                account.save()
                 output += f"Transferred {scheduled_transfer.amount} to {scheduled_transfer.account}\n"
         return output

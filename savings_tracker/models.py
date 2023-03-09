@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+import datetime
 
 class Account(models.Model):
     name = models.CharField(max_length=64)
@@ -16,6 +17,11 @@ class Transaction(models.Model):
 
     def __str__(self):
         return self.description
+    
+    def save(self, *args, **kwargs):
+        self.account.balance += self.amount
+        self.account.save()
+        super().save(*args, **kwargs)
     
 class ScheduledTransfer(models.Model):
     description = models.CharField(max_length=64)
