@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+{% include 'nav.html' %}
+
+<main role="main">
+    <div class="container text-center">
+        <div class="row h-80 justify-content-center align-items-center p-4">
+            <div class="col-md-12">
+                <table class="table">
+                    <h2>Scheduled Transfers</h2>
+                    <thead>
+                        <tr>
+                            <th scope="col">Account</th>
+                            <th scope="col">Day of Month</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transfer in transfer_list %}
+                        <tr>
+                        <td>{{ transfer.account.name }} </th>
+                        <td>{{ transfer.day_of_month }} </th>
+                        <td>${{ transfer.amount }}</td>
+                        <td>{{ transfer.description }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="container fixed-bottom">
+    <p>&copy; 2023 - Kevin Vecchione</p>
+</footer>
+{% endblock %}

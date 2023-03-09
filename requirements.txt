@@ -1,0 +1,7 @@
+django
+django_cron
+django-bootstrap5
+django-money
+django-crispy-forms
+crispy-bootstrap5
+mysqlclient

@@ -1,0 +1,33 @@
+FROM ubuntu:latest
+
+RUN useradd app
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=America/New_York
+
+COPY requirements.txt /requirements.txt
+
+RUN apt-get update \
+  && DEBIAN_FRONTEND=noninteractive \
+  && apt-get -y install cron python3 python3-pip python3-venv sudo default-libmysqlclient-dev tzdata \
+  && mkdir /app \
+  && chown app /app \
+  && chown app /etc/environment \
+  && python3 -m venv /app/env \
+  && /app/env/bin/python -m pip install -r requirements.txt \
+  && apt-get purge -y --autoremove build-essential \
+  && chown -R app /app
+
+RUN echo "01 * * * * app /app/env/bin/python /app/manage.py runcrons" >> /etc/crontab
+RUN echo "app ALL=(root) NOPASSWD: /usr/sbin/cron" >> /etc/sudoers 
+
+COPY --chown=app *.py entrypoint.sh /app/
+COPY --chown=app savings_tracker /app/savings_tracker
+
+USER app
+
+WORKDIR /app
+
+EXPOSE 8000
+
+ENTRYPOINT ["bash", "entrypoint.sh"]

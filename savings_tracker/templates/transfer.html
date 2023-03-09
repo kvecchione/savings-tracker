@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load crispy_forms_tags %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+{% include 'nav.html' %}
+
+<main role="main">
+    <div class="container">
+        <div class="row p-5">
+            <h2>Make a Transfer</h2>
+            <form action="/transfer/" method="post">
+                {% csrf_token %}
+                {{form|crispy}}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<footer class="container fixed-bottom">
+    <p>&copy; 2023 - Kevin Vecchione</p>
+</footer>
+{% endblock %}

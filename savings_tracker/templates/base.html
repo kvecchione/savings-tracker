@@ -1,0 +1,22 @@
+<html lang="en">
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% bootstrap_messages %}
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+
+    </head>
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>
