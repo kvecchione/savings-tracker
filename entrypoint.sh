@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # export env vars to file for cron
-env | grep MYSQL_ | sed "s/^/export /g" > /app/.env
+env | grep "DJANGO_\|MYSQL_" | sed "s/^/export /g" > /app/.env
 
 # start cron
 sudo crond -b 
