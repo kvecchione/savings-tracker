@@ -35,17 +35,16 @@ The container runs a cron job every hour to trigger the check for monthly schedu
 Thanks to Bootstrap, the look and feel is simple, but clean. Both desktop and mobile are functional.
 
 ### Homepage
-![](https://github.com/kvecchione/savings-tracker/blob/main/docs/images/home.png?raw=true)
+<img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/home.png?raw=true" width="500">
 
 ### Transfers
-![](https://github.com/kvecchione/savings-tracker/blob/main/docs/images/transfer.png?raw=true)
+<img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/transfer.png?raw=true" width="500">
 
 ### Transaction List
-![](https://github.com/kvecchione/savings-tracker/blob/main/docs/images/transactions.png?raw=true)
+<img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/transactions.png?raw=true" width="500">
 
 ### Scheduled Transfers
-![](https://github.com/kvecchione/savings-tracker/blob/main/docs/images/scheduled.png?raw=true)
+<img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/scheduled.png?raw=true" width="500">
 
 ### Mobile Example
-![](https://github.com/kvecchione/savings-tracker/blob/main/docs/images/mobile_transfer.png?raw=true)
-
+<img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/mobile_transfer.png?raw=true" width="300">
