@@ -2,9 +2,9 @@
 
 ## Overview
 
-Savings Tracker (working title) is a Django-based web application I wrote to handle creating "virtual" savings accounts for my family. It can be used to track transactions and monthly scheduled transactions. It doesn't have many features right now but it does now what we needed it to do. I've really only exposed the ability to add a transaction/transfer to the UI at this time. All other create/delete/modify is done with the Django admin which is protected with credentials.
+Savings Tracker (working title) is a Django-based web application I wrote to handle creating "virtual" savings accounts for my family. It can be used to track one-time transactions and monthly scheduled transfers. It doesn't have many features right now but it does what we need it to do. I've really only exposed the ability to add a transaction/transfer to the UI at this time. All other create/delete/modify is done with the Django admin which is protected with credentials.
 
-I certainly *could* extend it to add more features, but there are better applications out there that do similar accounting-related things better - and I'd recommend using those. I really just wrote this to have some fun with Django code.
+I certainly *could* extend it to add more features, but there are better applications out there that do similar accounting-related things better - and I'd recommend using those. I really just wrote this to have some fun.
 
 ## Running It
 
