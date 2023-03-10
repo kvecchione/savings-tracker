@@ -4,7 +4,7 @@
 /app/env/bin/python manage.py migrate
 
 # Start cron
-sudo crond -f -l 8 | tee -a /tmp/crond.log &
+sudo -E crond -f -l 8 | tee -a /tmp/crond.log &
 
 # Start webserver
 /app/env/bin/python manage.py runserver 0.0.0.0:8000
