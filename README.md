@@ -15,11 +15,17 @@ This can be run locally with `python manage.py runserver` or can be built into a
 Running this requires some environment variables to be set to connect to the database, or it defaults to running sqlite3 (not a good idea in containers with shared storage).
 
 `DJANGO_SECRET` - Django secret key, make something up that's secure
+
 `DJANGO_DB_ENGINE` - Defaults to sqlite3, but this can be set to mysql - I don't have support for others right now.
+
 `MYSQL_HOSTNAME` - Database hostname
+
 `MYSQL_PORT` - Database port, defaults to 3306
+
 `MYSQL_DATABASE` - Database name
+
 `MYSQL_USERNAME` - Database username
+
 `MYSQL_PASSWORD` - Database password
 
 The container runs a cron job every hour to trigger the check for monthly scheduled transfers.
