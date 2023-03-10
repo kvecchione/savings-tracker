@@ -10,6 +10,7 @@ class RunScheduledTransfers(CronJobBase):
 
     def do(self):
         output = ""
+        transfers = False
         for scheduled_transfer in ScheduledTransfer.objects.all():
             if datetime.datetime.now().day == scheduled_transfer.day_of_month:
                 account = scheduled_transfer.account
@@ -20,4 +21,7 @@ class RunScheduledTransfers(CronJobBase):
                 transaction.description = scheduled_transfer.description
                 transaction.save()
                 output += f"Transferred {scheduled_transfer.amount} to {scheduled_transfer.account}\n"
+                transfers = True
+        if not transfers:
+            output += f"No transfers scheduled for this time period\n"
         return output
