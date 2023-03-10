@@ -32,6 +32,8 @@ The container runs a cron job every hour to trigger the check for monthly schedu
 
 ## Look and feel
 
+Thanks to Bootstrap, the look and feel is simple, but clean. Both desktop and mobile are functional.
+
 ### Homepage
 ![](https://github.com/kvecchione/savings-tracker/blob/main/docs/images/home.png?raw=true)
 
@@ -43,3 +45,7 @@ The container runs a cron job every hour to trigger the check for monthly schedu
 
 ### Scheduled Transfers
 ![](https://github.com/kvecchione/savings-tracker/blob/main/docs/images/scheduled.png?raw=true)
+
+### Mobile Example
+![](https://github.com/kvecchione/savings-tracker/blob/main/docs/images/mobile_transfer.png?raw=true)
+
