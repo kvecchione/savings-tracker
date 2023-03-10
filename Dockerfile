@@ -15,7 +15,7 @@ RUN addgroup app \
   && chown -R app:app /app \
   && apk del .build-deps
 
-RUN echo "01 * * * * . /app/.env && /app/env/bin/python /app/manage.py runcrons >> /tmp/cron.log 2>&1" >> /etc/crontabs/app
+RUN echo "* * * * * /app/env/bin/python /app/manage.py runcrons >> /tmp/cron.log 2>&1" >> /etc/crontabs/app
 RUN echo "app ALL=(root) NOPASSWD: /usr/sbin/crond" >> /etc/sudoers 
 
 COPY --chown=app:app *.py entrypoint.sh /app/
