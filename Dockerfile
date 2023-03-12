@@ -13,7 +13,7 @@ RUN addgroup app \
   && /app/env/bin/python -m pip install -r requirements.txt \
   && chown -R app:app /app \
   && apk del .build-deps \
-  && chown app:app /usr/sbin/crond && \
+  && chown app:app /usr/sbin/crond \
   && setcap cap_setgid=ep /usr/sbin/crond
 
 RUN echo "05 * * * * /app/env/bin/python /app/manage.py runcrons >> /tmp/cron.log 2>&1" > /etc/crontabs/app \
