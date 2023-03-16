@@ -35,7 +35,7 @@ The container runs a cron job every hour to trigger the check for monthly schedu
 Thanks to Bootstrap, the look and feel is simple, but clean. Both desktop and mobile are functional.
 
 ### Homepage
-<img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/home.png?raw=true" width="500">
+<img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/homepage.png?raw=true" width="500">
 
 ### Account Page
 <img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/account.png?raw=true" width="500">
