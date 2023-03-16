@@ -10,13 +10,14 @@
     <main role="main">
         <div class="container">
             <div class="p-4 my-4 bg-light rounded-4">
+                <h2>Account Details - {{ account.name }}</h2>
+                <br/>
+                <h4>Balance: <b>${{ account.balance }}</b></h4>
+                <br/>
                 <table class="table">
-                    <h2>{{title}}</h2>
+                    <h4>Recent Transactions</h4>
                     <thead>
                         <tr>
-                            {% if show_account %}
-                            <th scope="col">Account</th>
-                            {% endif %}
                             <th scope="col">Date</th>
                             <th scope="col">Amount</th>
                             <th scope="col">Description</th>
@@ -25,9 +26,6 @@
                     <tbody>
                         {% for transaction in transactions %}
                         <tr>
-                        {% if show_account %}
-                        <td><a href="/transactions/{{ transaction.account.name }}/">{{ transaction.account.name }}</a></th>
-                        {% endif %}
                         <td>{{ transaction.date }} </th>
                         <td>${{ transaction.amount }}</td>
                         <td>{{ transaction.description }}</td>

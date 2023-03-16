@@ -10,17 +10,12 @@ def home(request):
 def scheduled(request):
     return render(request, "scheduled.html", {'transfer_list': ScheduledTransfer.objects.all()})
 
-def transactions(request, account_name):
-    if account_name == 'all':
-        title = "All transactions"
-        transaction_list = Transaction.objects.all().order_by("date")[:20]
-        show_account = True
-    else:
-        title = f"Transactions for {account_name.title()}"
-        transaction_list = Transaction.objects.filter(account__name=account_name).order_by("date")[:20]
-        show_account = False
+def account(request, account_id):
+    account = Account.objects.get(id=account_id)
+    title = f"{account.name.title()}"
+    transaction_list = Transaction.objects.filter(account__id=account_id).order_by("date")[:10]
 
-    return render(request, "transactions.html", {'transactions': transaction_list, 'show_account': show_account, 'title': title})
+    return render(request, "account.html", {'transactions': transaction_list, 'account': account})
 
 def transfer(request):
     if request.method == 'POST':

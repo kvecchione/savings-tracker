@@ -22,5 +22,5 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('transfer/', views.transfer, name='transfer'),
     path('scheduled/', views.scheduled, name='scheduled'),
-    path('transactions/<str:account_name>/', views.transactions),
+    path('account/<str:account_id>/', views.account),
 ]
