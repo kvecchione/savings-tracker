@@ -37,11 +37,11 @@ Thanks to Bootstrap, the look and feel is simple, but clean. Both desktop and mo
 ### Homepage
 <img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/home.png?raw=true" width="500">
 
+### Account Page
+<img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/account.png?raw=true" width="500">
+
 ### Transfers
 <img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/transfer.png?raw=true" width="500">
-
-### Transaction List
-<img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/transactions.png?raw=true" width="500">
 
 ### Scheduled Transfers
 <img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/scheduled.png?raw=true" width="500">
