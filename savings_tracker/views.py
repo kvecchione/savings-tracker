@@ -5,7 +5,8 @@ from savings_tracker.models import Account, Transaction, ScheduledTransfer
 from savings_tracker.forms import TransferForm
 
 def home(request):
-    return render(request, "home.html", {'accounts': Account.objects.all()})
+    total_balance = sum([account.balance for account in Account.objects.all()])
+    return render(request, "home.html", {'accounts': Account.objects.all(), 'total_balance': total_balance})
 
 def scheduled(request):
     return render(request, "scheduled.html", {'transfer_list': ScheduledTransfer.objects.all()})
