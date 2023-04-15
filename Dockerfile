@@ -16,7 +16,7 @@ RUN addgroup app \
   && chown app:app /usr/sbin/crond \
   && setcap cap_setgid=ep /usr/sbin/crond
 
-RUN echo "0 9 15 * * /app/env/bin/python /app/manage.py runcrons >> /tmp/cron.log 2>&1" > /etc/crontabs/app \
+RUN echo "0 9 * * * /app/env/bin/python /app/manage.py runcrons >> /tmp/cron.log 2>&1" > /etc/crontabs/app \
   && chown app:app /etc/crontabs/app \
   && rm /etc/crontabs/root
 
