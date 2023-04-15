@@ -1,6 +1,6 @@
 FROM python:alpine
 
-ENV TZ=America/New_York TIMEZONE=America/New_York
+ENV TZ=America/New_York
 COPY requirements.txt /requirements.txt
 
 RUN addgroup app \
@@ -16,7 +16,7 @@ RUN addgroup app \
   && chown app:app /usr/sbin/crond \
   && setcap cap_setgid=ep /usr/sbin/crond
 
-RUN echo "00 * * * * /app/env/bin/python /app/manage.py runcrons >> /tmp/cron.log 2>&1" > /etc/crontabs/app \
+RUN echo "0 * * * * /app/env/bin/python /app/manage.py runcrons >> /tmp/cron.log 2>&1" > /etc/crontabs/app \
   && chown app:app /etc/crontabs/app \
   && rm /etc/crontabs/root
 
