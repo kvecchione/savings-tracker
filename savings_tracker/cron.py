@@ -3,9 +3,7 @@ from django_cron import CronJobBase, Schedule
 from savings_tracker.models import ScheduledTransfer, Transaction
 
 class RunScheduledTransfers(CronJobBase):
-    RUN_EVERY_MINS = 1440
-
-    schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
+    schedule = Schedule(run_at_times=['09:00'])
     code = 'run_scheduled_transfers'
 
     def do(self):
