@@ -10,7 +10,7 @@ class TransferForm(forms.Form):
     amount = forms.DecimalField(max_digits=8, decimal_places=2)
     description = forms.CharField(max_length=100)
 
-    def __init__(self, user, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         choices = [(a.name, f"{a.name} - Balance: {a.balance}") for a in Account.objects.all()]
         self.fields['account'].choices = choices
