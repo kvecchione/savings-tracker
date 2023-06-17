@@ -43,7 +43,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://savings.apps.kvecchione.com']
+CSRF_TRUSTED_ORIGINS = ['https://savings.apps.kvecchione.com', 'https://savings.zt.kvecchione.com']
 
 # Application definition
 
