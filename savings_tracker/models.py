@@ -20,8 +20,6 @@ class Transaction(models.Model):
         return self.description
     
     def save(self, *args, **kwargs):
-        if self.pk:
-            raise ValidationError("you may not edit an existing %s" % self._meta.model_name)
         self.account.balance += self.amount
         self.account.save()
         super().save(*args, **kwargs)
