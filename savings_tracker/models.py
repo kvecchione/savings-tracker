@@ -14,14 +14,17 @@ class Transaction(models.Model):
     description = models.CharField(max_length=64)
     account = models.ForeignKey(Account, on_delete=models.DO_NOTHING)
     amount = models.DecimalField(max_digits=50, decimal_places=2)
-    date = models.DateField()
+    datetime = models.DateTimeField()
+    post_balance = models.DecimalField(max_digits=50, decimal_places=2, default=0)
 
     def __str__(self):
         return self.description
     
     def save(self, *args, **kwargs):
-        self.account.balance += self.amount
-        self.account.save()
+        if self._state.adding is True:
+            self.account.balance += self.amount
+            self.account.save()
+            self.post_balance = self.account.balance
         super().save(*args, **kwargs)
     
 class ScheduledTransfer(models.Model):

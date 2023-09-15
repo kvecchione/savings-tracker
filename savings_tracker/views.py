@@ -14,7 +14,7 @@ def scheduled(request):
 def account(request, account_id):
     account = Account.objects.get(id=account_id)
     title = f"{account.name.title()}"
-    transaction_list = Transaction.objects.filter(account__id=account_id).order_by("-date")[:10]
+    transaction_list = Transaction.objects.filter(account__id=account_id).order_by("-datetime")
 
     return render(request, "account.html", {'transactions': transaction_list, 'account': account})
 
@@ -28,7 +28,7 @@ def transfer(request):
                 t.amount = -form.cleaned_data['amount']
             elif form.cleaned_data['type'] == 'deposit':
                 t.amount = form.cleaned_data['amount']
-            t.date = datetime.datetime.now()
+            t.datetime = datetime.datetime.now()
             t.description = form.cleaned_data['description']
             t.save()
 
