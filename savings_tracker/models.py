@@ -5,7 +5,7 @@ import datetime
 
 class Account(models.Model):
     name = models.CharField(max_length=64)
-    balance = models.DecimalField(max_digits=50, decimal_places=2)
+    balance = models.DecimalField(max_digits=50, decimal_places=2, default=0)
 
     def __str__(self):
         return self.name
