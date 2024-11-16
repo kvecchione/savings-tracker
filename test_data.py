@@ -8,7 +8,7 @@ Account.objects.all().delete()
 accounts = [
     {
         'name': 'Amy',
-        'balance': 0,
+        'balance': 1337.00,
         'transfers': {
             'amount': 250.00,
             'day_of_month': 15,
@@ -16,11 +16,12 @@ accounts = [
         'transactions': [{
             'description': 'Initial amount',
             'amount': 1337.00,
+            'datetime': datetime.datetime.now() - datetime.timedelta(days=1),
         }]
     },
     {
         'name': 'Bob',
-        'balance': 0,
+        'balance': 1234,
         'transfers': {
             'amount': 250.00,
             'day_of_month': 15,
@@ -28,14 +29,16 @@ accounts = [
         'transactions': [{
             'description': 'Initial amount',
             'amount': 1234.00,
+            'datetime': datetime.datetime.now() - datetime.timedelta(days=2),
         }]
     },
     {
         'name': 'Calvin',
-        'balance': 0,
+        'balance': 250,
         'transactions': [{
             'description': 'Initial amount',
             'amount': 250.00,
+            'datetime': datetime.datetime.now() - datetime.timedelta(days=3),
         }]
     }
 ]
@@ -55,6 +58,7 @@ for account in accounts:
         t.date = datetime.datetime.now()
         t.account = a
         t.amount = transaction['amount']
+        t.datetime = transaction['datetime']
         t.description = transaction['description']
         t.save()
 

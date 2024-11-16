@@ -20,13 +20,6 @@ class Transaction(models.Model):
     def __str__(self):
         return self.description
     
-    def save(self, *args, **kwargs):
-        if self._state.adding is True:
-            self.account.balance += self.amount
-            self.account.save()
-            self.post_balance = self.account.balance
-        super().save(*args, **kwargs)
-    
 class ScheduledTransfer(models.Model):
     description = models.CharField(max_length=64)
     account = models.ForeignKey(Account, on_delete=models.DO_NOTHING)

@@ -1,4 +1,4 @@
-django
+django~=5.0.0
 django_cron
 django-bootstrap5
 django-money
