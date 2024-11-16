@@ -7,7 +7,7 @@ class AccountAdmin(admin.ModelAdmin):
 
 # Make Transaction amount a read-only field
 class TransactionAdmin(admin.ModelAdmin):
-    readonly_fields = ('amount',)
+    readonly_fields = ('amount','post_balance','account')
 
 admin.site.register(Transaction, TransactionAdmin)
 admin.site.register(Account, AccountAdmin)
