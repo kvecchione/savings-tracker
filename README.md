@@ -40,11 +40,11 @@ Thanks to Bootstrap, the look and feel is simple, but clean. Both desktop and mo
 ### Account Page
 <img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/account.png?raw=true" width="500">
 
-### Transfers
-<img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/transfer.png?raw=true" width="500">
+### Transactions
+<img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/transaction.png?raw=true" width="500">
 
 ### Scheduled Transfers
 <img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/scheduled.png?raw=true" width="500">
 
-### Mobile Example
-<img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/mobile_transfer.png?raw=true" width="300">
+### Mobile Transactions
+<img src="https://github.com/kvecchione/savings-tracker/blob/main/docs/images/mobile_transaction.png?raw=true" width="300">

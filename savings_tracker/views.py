@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 import datetime
 from savings_tracker.models import Account, Transaction, ScheduledTransfer
-from savings_tracker.forms import TransferForm
+from savings_tracker.forms import TransactionForm
 
 def home(request):
     total_balance = sum([account.balance for account in Account.objects.all()])
@@ -18,9 +18,9 @@ def account(request, account_id):
 
     return render(request, "account.html", {'transactions': transaction_list, 'account': account})
 
-def transfer(request):
+def transaction(request):
     if request.method == 'POST':
-        form = TransferForm(request.POST)
+        form = TransactionForm(request.POST)
         if form.is_valid():
             t = Transaction()
             t.account = Account.objects.get(name=form.cleaned_data['account'])
@@ -34,5 +34,5 @@ def transfer(request):
 
             return HttpResponseRedirect('/')
     else:
-        form = TransferForm()
-    return render(request, "transfer.html", {'form': form})
+        form = TransactionForm()
+    return render(request, "transaction.html", {'form': form})
