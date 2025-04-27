@@ -20,7 +20,7 @@ from savings_tracker import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', views.home, name='home'),
-    path('transfer/', views.transfer, name='transfer'),
+    path('transaction/', views.transaction, name='transaction'),
     path('scheduled/', views.scheduled, name='scheduled'),
     path('account/<str:account_id>/', views.account),
 ]
