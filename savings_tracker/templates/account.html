@@ -22,6 +22,7 @@
                             <th scope="col">Amount</th>
                             <th scope="col">Note</th>
                             <th scope="col">Balance</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,6 +32,13 @@
                         <td>${{ transaction.amount }}</td>
                         <td>{{ transaction.description |wordwrap:10 }}</td>
                         <td>${{ transaction.post_balance }}</td>
+                        <td>
+                            <a href="/transaction/edit/{{ transaction.id }}/" class="btn btn-sm btn-primary">Edit</a>
+                            <form method="POST" action="/transaction/delete/{{ transaction.id }}/" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this transaction?');">Delete</button>
+                            </form>
+                        </td>
                         </tr>
                         {% endfor %}
                     </tbody>
