@@ -2,3 +2,15 @@ table {
     word-wrap: break-word;
     table-layout: fixed;
 }
+
+.table-hover-row:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-hover-disable {
+    pointer-events: none;
+}
+
+.table-hover-disable .card {
+    pointer-events: auto;
+}
