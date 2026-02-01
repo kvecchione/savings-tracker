@@ -22,15 +22,20 @@
                             <th scope="col">Amount</th>
                             <th scope="col">Note</th>
                             <th scope="col">Balance</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for transaction in transactions %}
                         <tr>
-                        <td>{{ transaction.datetime |date:"m/d/y" }} </th>
+                        <td>{{ transaction.datetime |date:"m/d/y" }}</td>
                         <td>${{ transaction.amount }}</td>
                         <td>{{ transaction.description |wordwrap:10 }}</td>
                         <td>${{ transaction.post_balance }}</td>
+                        <td>
+                            <a href="{% url 'transaction_edit' transaction.id %}" class="btn btn-sm btn-primary">Edit</a>
+                            <a href="{% url 'transaction_delete' transaction.id %}" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
                         </tr>
                         {% endfor %}
                     </tbody>

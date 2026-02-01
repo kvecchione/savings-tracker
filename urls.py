@@ -21,6 +21,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('', views.home, name='home'),
     path('transaction/', views.transaction, name='transaction'),
+    path('transaction/<int:pk>/edit/', views.edit_transaction, name='transaction_edit'),
+    path('transaction/<int:pk>/delete/', views.delete_transaction, name='transaction_delete'),
     path('scheduled/', views.scheduled, name='scheduled'),
-    path('account/<str:account_id>/', views.account),
+    path('account/<str:account_id>/', views.account, name='account'),
 ]

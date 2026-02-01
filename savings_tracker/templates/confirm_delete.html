@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirm Delete{% endblock %}
+
+{% block content %}
+
+{% include 'nav.html' %}
+
+<main role="main">
+    <div class="container">
+        <div class="p-4 my-4 bg-light rounded-4">
+            <h2>Confirm Delete</h2>
+            <p>Are you sure you want to delete transaction: <strong>{{ object.description }}</strong> ({{ object.amount }})?</p>
+            <form method="post" action="">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a href="{% url 'account' account_id=object.account.id %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</main>
+
+{% include 'footer.html' %}
+{% endblock %}

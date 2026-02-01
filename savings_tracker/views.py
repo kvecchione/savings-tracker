@@ -1,8 +1,8 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 import datetime
 from savings_tracker.models import Account, Transaction, ScheduledTransfer
-from savings_tracker.forms import TransactionForm
+from savings_tracker.forms import TransactionForm, EditTransactionForm
 
 def home(request):
     total_balance = sum([account.balance for account in Account.objects.all()])
@@ -36,3 +36,37 @@ def transaction(request):
     else:
         form = TransactionForm()
     return render(request, "transaction.html", {'form': form})
+
+
+def recompute_post_balances(account):
+    transactions = Transaction.objects.filter(account=account).order_by('datetime')
+    running = 0
+    for t in transactions:
+        running += t.amount
+        t.post_balance = running
+        t.save()
+    account.balance = running
+    account.save()
+
+
+def edit_transaction(request, pk):
+    t = get_object_or_404(Transaction, pk=pk)
+    if request.method == 'POST':
+        form = EditTransactionForm(request.POST, instance=t)
+        if form.is_valid():
+            form.save()
+            recompute_post_balances(t.account)
+            return redirect('account', account_id=t.account.id)
+    else:
+        form = EditTransactionForm(instance=t)
+    return render(request, "transaction.html", {'form': form, 'edit': True, 'transaction': t})
+
+
+def delete_transaction(request, pk):
+    t = get_object_or_404(Transaction, pk=pk)
+    if request.method == 'POST':
+        account = t.account
+        t.delete()
+        recompute_post_balances(account)
+        return redirect('account', account_id=account.id)
+    return render(request, "confirm_delete.html", {'object': t})

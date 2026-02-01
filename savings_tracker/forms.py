@@ -14,3 +14,13 @@ class TransactionForm(forms.Form):
         super().__init__(*args, **kwargs)
         choices = [(a.name, f"{a.name} - Balance: {a.balance}") for a in Account.objects.all()]
         self.fields['account'].choices = choices
+
+
+from django.forms import ModelForm
+from savings_tracker.models import Transaction
+
+
+class EditTransactionForm(ModelForm):
+    class Meta:
+        model = Transaction
+        fields = ['amount', 'description']
